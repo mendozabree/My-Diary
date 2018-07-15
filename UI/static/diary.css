@@ -14,7 +14,7 @@ html, body{
 
 
 .sign_in_container{
-    background: url("../img/background.jpg") no-repeat center;
+    background: url("../img/bckgnd-img.jpg") no-repeat center;
     background-size: cover;
     min-height: 100%;
     width: auto;
@@ -30,7 +30,7 @@ html, body{
     justify-content: center;
     display: flex;
     padding-top: 0;
-    background: url("../img/background.jpg") no-repeat center;
+    background: url("../img/bckgnd-img.jpg") no-repeat center;
     background-size: cover;
     min-height: 100%;
     padding-bottom: 0;

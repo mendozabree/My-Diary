@@ -2,26 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/diary.css">
+    <link rel="icon" href="img/favicon.ico">
     <title>SignUp</title>
 </head>
 <body>
-    <div class="container">
-        <form action="POST">
+    <div class="signup_container">
+        <form method="post">
             <div class="user_data">
-            <h2>SignUp</h2>
-            <div><label class="text-label" for="firstName">First Name</label></div>
-            <div><input id="firstName" class="text-box" type="text"></div>
-            <div><label class="text-label" for="lastName">Last Name</label></div>
-            <div><input id="lastName" class="text-box" type="text"></div>
-            <div><label class="text-label" for="userName">Username</label></div>
-            <div><input id="userName" class="text-box" type="text"></div>
-            <div><label class="text-label" for="email">Email</label></div>
-            <div><input id="email" class="text-box" type="text"></div>
-            <div><label class="text-label" for="password">Password</label></div>
-            <div><input id="password" class="text-box" type="text"></div>
-            <div><button class="primary-btn">Sign Up</button></div>
-        </div>
+                <h2>SignUp</h2>
+                <div><label class="text-label" for="firstName">First Name</label></div>
+                <div><input id="firstName" class="text-box" type="text"></div>
+                <div><label class="text-label" for="lastName">Last Name</label></div>
+                <div><input id="lastName" class="text-box" type="text"></div>
+                <div><label class="text-label" for="userName">Username</label></div>
+                <div><input id="userName" class="text-box" type="text"></div>
+                <div><label class="text-label" for="email">Email</label></div>
+                <div><input id="email" class="text-box" type="text"></div>
+                <div><label class="text-label" for="password">Password</label></div>
+                <div><input id="password" class="text-box" type="text"></div>
+                <div>
+                    <button onclick="location.href='/My-Diary/UI/home.html'" class="primary-btn" type="button">Sign Up</button>
+                    <button onclick="location.href='/My-Diary/UI/sign_in.html'" class="secondary-btn" type="button">Sign In</button>
+                </div>
+                <!--<div><a href="home.html" id="signup_btn">Sign Up</a></div>-->
+            </div>
         </form>
     </div>
+
 </body>
 </html>

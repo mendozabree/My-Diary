@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
+    <link rel="stylesheet" href="static/diary.css">
+    <link rel="icon" href="img/favicon.ico">
 </head>
 <body>
-    <div class="container">
-        <form action="POST">
+    <div class="sign_in_container">
+        <form method="POST">
             <div class="user_data">
-            <div><label class="text-label" for="username">Username</label></div>
-            <div><input id="username" class="text-box" type="text"></div>
-            <div><label class="text-label" for="password">Password</label></div>
-            <div><input id="password" class="text-box" type="text"></div>
-            <div>
-                <button class="primary-btn">Sign In</button>
-                <button class="secondary-btn">Sign Up</button>
+                <div><label class="text-label" for="username">Username</label></div>
+                <div><input id="username" class="text-box" type="text"></div>
+                <div><label class="text-label" for="password">Password</label></div>
+                <div><input id="password" class="text-box" type="text"></div>
+                <div>
+                    <button onclick="location.href='/My-Diary/UI/home.html'" class="primary-btn" type="button">Sign In</button>
+                    <button onclick="location.href='/My-Diary/UI/signup.html'" class="secondary-btn" type="button">Sign Up</button>
+                </div>
             </div>
-        </div>
         </form>
     </div>
 </body>

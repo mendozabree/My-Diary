@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/diary.css">
+    <link rel="icon" href="img/favicon.ico">
     <title>New Entry</title>
 </head>
 <body>
     <nav class="nav">
-        <a href="home.html">My Diary</a>
+        <ul class="top-nav">
+            <li><a class="active" href="home.html">My Diary</a></li>
+            <li class="right"><a href=profile.html>Profile</a></li>
+        </ul>
     </nav>
+    <div cl
     <div class="container">
         <div class="my_entry">
-            <div><label>12 March 2019</label></div>
-            <textarea id="entry" cols="30" rows="10"></textarea>
+            <div>
+                <img src="img/calendar.png" alt="calendar" class="calendar">
+                <label class="date-label">12 March 2019</label>
+            </div>
+            <textarea id="entry" cols="150" rows="10"></textarea>
         </div>
+        <button class="primary-btn">Save</button>
     </div>
 </body>
 </html>

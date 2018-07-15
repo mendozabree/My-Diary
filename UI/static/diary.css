@@ -92,7 +92,7 @@ html, body{
 
 .entry{
     box-shadow: 0 2px 6px 1px #294257;
-    margin: 20px 20px 10px 20px;
+    margin: 0 0 40px 20px;
     padding: 30px 20px 30px 20px;
     border: 0;
     border-radius: 15px
@@ -120,6 +120,7 @@ html, body{
     background:white;
     border: 0;
     float: right;
+    right: 40px;
 }
 
 .new-entry-btn{

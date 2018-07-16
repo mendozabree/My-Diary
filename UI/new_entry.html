@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/diary.css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>New Entry</title>
+</head>
+<body>
+    <nav class="nav">
+        <ul class="top-nav">
+            <li><a class="active" href="home.html"><img src="img/MyDiary-small.PNG" alt="My Diary"></a></li>
+            <li class="right"><a href=profile.html>Profile</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="my_entry">
+            <div>
+                <input type="text" PLACEHOLDER="Enter date" class="date-label">
+            </div>
+            <textarea id="entry" cols="120" rows="10" placeholder="How are you today?"></textarea>
+        </div>
+        <button class="primary-btn save-btn" onclick="location.href='/My-Diary/UI/home.html'">Save</button>
+    </div>
+</body>
+</html>

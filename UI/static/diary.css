@@ -3,26 +3,26 @@ html, body{
     margin: 0;
 }
 
+h2{
+    color: #3B3B3B;
+}
 
 .container{
     align-items: center;
     justify-content: center;
     padding: 50px 100px 100px;
-    /*background-color: lightsalmon;*/
     min-height: 100%;
 }
 
 
 .sign_in_container{
-    background: url("../img/background.jpg") no-repeat center;
+    background: url("../img/bckgnd-img.jpg") no-repeat center;
     background-size: cover;
     min-height: 100%;
     width: auto;
     align-items: center;
     justify-content: center;
     display: flex;
-/*    padding-top: 200px;
-    padding-bottom: 150px;*/
 }
 
 .signup_container{
@@ -30,7 +30,7 @@ html, body{
     justify-content: center;
     display: flex;
     padding-top: 0;
-    background: url("../img/background.jpg") no-repeat center;
+    background: url("../img/bckgnd-img.jpg") no-repeat center;
     background-size: cover;
     min-height: 100%;
     padding-bottom: 0;
@@ -38,14 +38,12 @@ html, body{
 
 .user_data{
     box-shadow: 0 0 12px 0;
-    border-top: #40A4F4 solid 10px;
+    border-top: #1443FC solid 10px;
     background-color: white;
     width: 300px;
     padding-left: 60px;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 30px;
-    /*margin: 135px;*/
-
 }
 
 .text-box{
@@ -53,8 +51,8 @@ html, body{
     padding: 10px 10px;
     outline: 0;
     border-radius: 5px;
-    /* outline: 0; */
-    box-shadow: inset 0 1px 2px 0 hsla(0, 0%, 0%, 0.08);
+    border: 1px solid #B2AED4;
+    font-size: 14px;
     height: 20px;
     width: 200px;
 }
@@ -92,10 +90,18 @@ html, body{
 
 .entry{
     box-shadow: 0 2px 6px 1px #294257;
-    margin: 0 0 40px 20px;
+    margin-bottom: 30px;
     padding: 30px 20px 30px 20px;
     border: 0;
     border-radius: 15px
+}
+
+.entry:hover{
+    animation: pop 0.2s linear 1;
+}
+
+@keyframes pop {
+    50% {transform: scale(1.01);}
 }
 
 .primary-btn{
@@ -107,6 +113,12 @@ html, body{
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+.primary-btn:hover{
+    background-color: white;
+    border: blue solid 2px;
+    color: blue;
+}
+
 .secondary-btn{
     border-radius: 5px;
     background-color: white;
@@ -116,11 +128,19 @@ html, body{
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+.secondary-btn:hover{
+    color: blue;
+    background-color: #A0B2C1 ;
+}
+
 .edit-btn{
     background:white;
     border: 0;
     float: right;
-    right: 40px;
+}
+
+.edit-btn:hover{
+    border: 1px solid #1745FC;
 }
 
 .new-entry-btn{
@@ -149,29 +169,13 @@ html, body{
     margin-left: 25px;
 }
 
-/*#signup_btn{
-    width: 200px;
-    height: 40px;
-    box-shadow: inset 0px 1px 0px 0px;
-    border-radius: 4px;
-    background-color: #097BC0;
-    box-shadow: 0px 2px 4px gray;
-    display: block;
-    border: 1px solid #094BC0;
-}*/
-
-/*.nav{
-    padding: 20px;
-}*/
-
-
 ul.top-nav{
     list-style-type: none;
     margin: 0;
     padding-right: 80px;
     padding-left: 80px;
     overflow: hidden;
-    background-color: #043C7E;
+    background-color: #1745FC;
 }
 ul.top-nav li {float: left;}
 
@@ -185,9 +189,7 @@ ul.top-nav li a {
 }
 
 ul.top-nav li a:hover:not(.active)
-{background-color: #111}
-
-/*ul.top-nav li a.active{background-color: #4CAF50}*/
+{background-color: #FCD10F}
 
 ul.top-nav li.right {float: right}
 

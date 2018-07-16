@@ -81,11 +81,20 @@ h2{
 }
 
 #entry{
-    box-shadow: 0 2px 6px 1px hsla(0, 0%, 0%, 0.2);
+    box-shadow: 0 2px 6px 1px #294257;
     margin: 20px 20px 10px 20px;
     padding: 30px 20px 30px 20px;
     border: 0;
-    border-radius: 15px
+    border-radius: 15px;
+    font-family: Gabriola;
+    font-size: 20px;
+    word-spacing: 3px;
+}
+
+.label{
+    padding-bottom: 5px;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+    font-size: medium;
 }
 
 .entry{
@@ -111,6 +120,7 @@ h2{
     color: white;
     padding: 10px 20px;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
 }
 
 .primary-btn:hover{
@@ -126,6 +136,7 @@ h2{
     color: blue;
     padding: 10px 20px;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
 }
 
 .secondary-btn:hover{
@@ -155,6 +166,11 @@ h2{
     padding: 15px;
     border-radius: 70%;
     font-size: 18px;
+}
+
+.save-btn{
+    float: right;
+    margin-right: 80px;
 }
 
 .add{

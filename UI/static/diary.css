@@ -46,6 +46,14 @@ h2{
     padding-bottom: 30px;
 }
 
+.intro{
+    background: none;
+    border: none;
+    font-size: 30px;
+    float: left;
+    padding: 10px 10px;
+}
+
 .text-box{
     margin-bottom: 20px;
     padding: 10px 10px;
@@ -130,13 +138,18 @@ h2{
 }
 
 .secondary-btn{
+    display: block;
     border-radius: 5px;
     background-color: white;
-    border: #A0B2C1 solid 2px;
+    border: none;
     color: blue;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     font-size: 18px;
+    width: 70px;
+    text-decoration: none;
+    float: right;
+    margin-right: 90px;
 }
 
 .secondary-btn:hover{
@@ -172,6 +185,7 @@ h2{
     float: right;
     margin-right: 80px;
 }
+
 
 .add{
     position: fixed;

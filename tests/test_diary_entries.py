@@ -14,6 +14,12 @@ class DiaryEntryTestCase(unittest.TestCase):
         assert b'Exhausted' in response.data
         assert b'Excitement' in response.data
 
+    def test_get_specific_entry(self):
+        testing_user = app.test_client(self)
+        my_id = {"id": 1}
+        response = testing_user.get("/api/v1/entries/{}".format(my_id['id']))
+        assert b'Exhausted' in response.data
+
 
 if __name__ == '__main__':
     unittest.main()

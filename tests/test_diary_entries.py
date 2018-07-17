@@ -16,8 +16,8 @@ class DiaryEntryTestCase(unittest.TestCase):
 
     def test_get_specific_entry(self):
         testing_user = app.test_client(self)
-        my_id = {"id": 1}
-        response = testing_user.get("/api/v1/entries/{}".format(my_id['id']))
+        my_id = {"entry_id": 1}
+        response = testing_user.get("/api/v1/entries/{}".format(my_id['entry_id']))
         assert b'Exhausted' in response.data
 
 

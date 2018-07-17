@@ -1,5 +1,5 @@
 import unittest
-from app import app
+from api.v1 import app
 
 
 class DiaryEntryTestCase(unittest.TestCase):
@@ -12,6 +12,7 @@ class DiaryEntryTestCase(unittest.TestCase):
         testing_user = app.test_client(self)
         response = testing_user.get("/api/v1/entries", content_type="application/json")
         assert b'Exhausted' in response.data
+        assert b'Excitement' in response.data
 
 
 if __name__ == '__main__':

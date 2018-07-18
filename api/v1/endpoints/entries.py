@@ -53,8 +53,8 @@ def get_specific_entry(entry_id):
 @app.route('/api/v1/entries', methods=['POST'])
 def new_entry():
     response = request.get_json()
-    my_entry.create_new_entry(response)
-    return make_response("Entry added")
+    res = my_entry.create_new_entry(response)
+    return jsonify({"Messages": res})
 
 
 @app.route('/api/v1/entries/<int:entry_id>', methods=['PUT'])

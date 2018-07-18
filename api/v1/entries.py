@@ -27,5 +27,4 @@ def new_entry():
     response = request.get_json()
     response['entry_id'] = len(my_entries) + 1
     my_entries.append(response)
-    # return jsonify({"entries": my_entries})
     return make_response('Entry was successful', 201)

@@ -11,7 +11,8 @@ from api.v1 import app
 
 
 class DiaryEntryTestCase(unittest.TestCase):
-    def create_app(self):
+    @staticmethod
+    def create_app():
         app['TESTING'] = True
         return app
 
@@ -89,14 +90,14 @@ class DiaryEntryTestCase(unittest.TestCase):
         self.my_entries[0]['content'] = ''
         response = testing_user.put("/api/v1/entries/1", data=json.dumps(self.my_entries[0]),
                                     content_type="application/json")
-        self.assertIn("Please provide some content", str(response.data))
+        self.assertIn("Please provide content", str(response.data))
 
     def test_API_will_fail_to_update_when_title_is_empty(self):
         testing_user = app.test_client(self)
         self.my_entries[1]['title'] = ''
-        response = testing_user.put("/api/v1/entries/1", data=json.dumps(self.my_entries[0]),
+        response = testing_user.put("/api/v1/entries/1", data=json.dumps(self.my_entries[1]),
                                     content_type="application/json")
-        self.assertIn("Please provide a title for this entry", str(response.data))
+        self.assertIn("Please provide title", str(response.data))
 
     def test_modify_entry(self):
         """Tests that a user can modify an entry"""

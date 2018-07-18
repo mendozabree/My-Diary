@@ -15,7 +15,6 @@ class DiaryEntryTestCase(unittest.TestCase):
         assert b'Exhausted' in response.data
         assert b'Excitement' in response.data
 
-
     def test_get_specific_entry(self):
         testing_user = app.test_client(self)
         my_id = {"entry_id": 1}
@@ -32,7 +31,7 @@ class DiaryEntryTestCase(unittest.TestCase):
             'content': 'Today am spent!'}
         testing_user = app.test_client(self)
         response = testing_user.post("/api/v1/entries", data=json.dumps(new_entry), content_type="application/json")
-        assert response.status_code == 201
+        assert response.status_code == 200
 
     def test_modify_entry(self):
         """Tests that a user can modify an entry"""

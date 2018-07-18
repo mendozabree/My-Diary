@@ -1,11 +1,18 @@
+"""This module the test_diary_entries module.
+
+This module tests the entries endpoints of the API.
+"""
+
+
 import unittest
-from api.v1 import app
 import json
+
+from api.v1 import app
 
 
 class DiaryEntryTestCase(unittest.TestCase):
     def create_app(self):
-        app.config['TESTING'] = True
+        app['TESTING'] = True
         return app
 
     def setUp(self):
@@ -27,7 +34,28 @@ class DiaryEntryTestCase(unittest.TestCase):
                            'I am going to work along with them then later create my own product.'
             }
         ]
-    
+
+    def test_API_can_not_make_an_entry_without_all_fields(self):
+        """Tests that the API will fail to create new entry if an field is missing"""
+        testing_user = app.test_client(self)
+        self.my_entries[0]['title'] = ""
+        response = testing_user.post("/api/v1/entries", data=json.dumps(self.my_entries[0]),
+                                     content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("All details are required", str(response.data))
+
+    def test_API_can_make_new_entry(self):
+        """Tests that a new entry can be created"""
+        new_entry = {
+            'entry_id': 1,
+            'entry_date': '7 June 2018',
+            'entry_time': '18 15',
+            'title': 'Exhausted',
+            'content': 'Today am spent!'}
+        testing_user = app.test_client(self)
+        response = testing_user.post("/api/v1/entries", data=json.dumps(new_entry), content_type="application/json")
+        assert response.status_code == 200
+
     def test_get_all_entries(self):
         """Tests that all entries can be retrieved"""
         testing_user = app.test_client(self)
@@ -40,18 +68,6 @@ class DiaryEntryTestCase(unittest.TestCase):
         my_id = {"entry_id": 1}
         response = testing_user.get("/api/v1/entries/{}".format(my_id['entry_id']))
         assert b'Exhausted' in response.data
-
-    def test_new_entry(self):
-        """Tests that a new entry can be created"""
-        new_entry = {
-            'entry_id': 1,
-            'entry_date': '7 June 2018',
-            'entry_time': '18 15',
-            'title': 'Exhausted',
-            'content': 'Today am spent!'}
-        testing_user = app.test_client(self)
-        response = testing_user.post("/api/v1/entries", data=json.dumps(new_entry), content_type="application/json")
-        assert response.status_code == 200
 
     def test_modify_entry(self):
         """Tests that a user can modify an entry"""

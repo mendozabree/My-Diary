@@ -1,5 +1,5 @@
 from api.v1 import app
-from flask import jsonify
+from flask import jsonify, request, make_response
 
 # Dummy entries
 my_entries = [{
@@ -20,3 +20,12 @@ my_entries = [{
 @app.route('/api/v1/entries', methods=['GET'])
 def get_all_entries():
     return jsonify({'My entries': my_entries})
+
+
+@app.route('/api/v1/entries', methods=['POST'])
+def new_entry():
+    response = request.get_json()
+    response['entry_id'] = len(my_entries) + 1
+    my_entries.append(response)
+    # return jsonify({"entries": my_entries})
+    return make_response('Entry was successful', 201)

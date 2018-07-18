@@ -1,5 +1,5 @@
 from api.v1 import app
-from flask import jsonify
+from flask import jsonify, make_response, request
 
 # Dummy entries
 my_entries = [{
@@ -29,3 +29,11 @@ def get_specific_entry(entry_id):
         return jsonify({'Your entry':my_entry[0]})
     else:
         return jsonify({'Message': 'No entry found!'})
+
+
+@app.route('/api/v1/entries', methods=['POST'])
+def new_entry():
+    response = request.get_json()
+    response['entry_id'] = len(my_entries) + 1
+    my_entries.append(response)
+    return make_response('Entry was successful', 201)

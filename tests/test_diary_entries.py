@@ -15,6 +15,12 @@ class DiaryEntryTestCase(unittest.TestCase):
         assert b'Exhausted' in response.data
         assert b'Excitement' in response.data
 
+    def test_get_specific_entry(self):
+        testing_user = app.test_client(self)
+        my_id = {"entry_id": 1}
+        response = testing_user.get("/api/v1/entries/{}".format(my_id['entry_id']))
+        assert b'Exhausted' in response.data
+
     def test_new_entry(self):
         """Tests that a new entry can be created"""
         new_entry = {

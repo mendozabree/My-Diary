@@ -12,6 +12,5 @@ script:
   - pytest tests/test_diary_entries.py
 
 after_success:
-  -coverage report
-  -coveralls
-  #upload reports to coveralls.io
+  - coverage report
+  - coveralls

@@ -37,7 +37,7 @@ class Entry:
         if len(message) == 0:
             entry_data['entry_id'] = self.number_of_entries = self.number_of_entries + 1
             entries.append(entry_data)
-            return "Your memory has been saved"
+            return 'Your memory entitled ' + entry_data['title'] + ' has been saved'
         else:
             return message
 

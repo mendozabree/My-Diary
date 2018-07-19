@@ -99,6 +99,26 @@ class User:
         self.number_of_users = 0
 
     def signup(self, signup_data, my_users):
-        signup_data['id'] = self.number_of_users = self.number_of_users + 1
-        my_users.append(signup_data)
-        return 'Welcome ' + signup_data['username']
+        message = []
+        expected_key_list = ['first_name', 'last_name', 'email', 'username', 'password']
+        signup_data_key_list = [*signup_data.keys()]
+
+        odds = [this_key for this_key in expected_key_list if this_key not in signup_data_key_list]
+        if len(odds) != 0:
+            for key in odds:
+                error = 'Missing ' + key
+                message.append(error)
+
+        similar = [some_key for some_key in expected_key_list if some_key in signup_data_key_list]
+        for my_key in similar:
+            value = signup_data[my_key]
+            if value == '':
+                missing_value = 'Please fill in ' + my_key
+                message.append(missing_value)
+
+        if len(message) == 0:
+            signup_data['entry_id'] = self.number_of_users = self.number_of_users + 1
+            my_users.append(signup_data)
+            return 'Welcome ' + signup_data['username']
+        else:
+            return message

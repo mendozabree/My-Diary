@@ -8,7 +8,6 @@ before_script:
   - chmod +x ./cc-test-reporter
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
   - pip install coverage
 
 # for codecoverage on codeclimate.com
@@ -20,7 +19,3 @@ env:
 # command to run tests
 script:
   - pytest tests/test_diary_entries.py
-
-after_success:
-  - coveralls
-  - coverage report

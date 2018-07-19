@@ -73,9 +73,18 @@ class DiaryEntryTestCase(unittest.TestCase):
 
     def test_get_all_entries(self):
         """Tests that all entries can be retrieved"""
+        new_entry = {
+            'entry_id': 1,
+            'entry_date': '7 June 2018',
+            'entry_time': '18 15',
+            'title': 'Exhausted',
+            'content': 'Today am spent!'}
         testing_user = app.test_client(self)
+        res = testing_user.post("/api/v1/entries", data=json.dumps(new_entry), content_type="application/json")
+        assert res.status_code == 200
         response = testing_user.get("/api/v1/entries")
-        self.assertIn("My first Flask API", str(response.data))
+        self.assertIn("Exhausted", str(response.data))
+
 
     def test_get_specific_entry(self):
         testing_user = app.test_client(self)

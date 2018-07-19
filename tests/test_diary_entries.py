@@ -56,6 +56,29 @@ class DiaryEntryTestCase(unittest.TestCase):
                 'password': 'PanJoc'
             }
         ]
+        self.my_user = [
+            {
+                'first_name': 'Shem',
+                'last_name': 'Nambale',
+                'email': 'shem@gmail.com',
+                'password': 'SNambale'
+            }
+        ]
+
+    def test_user_can_not_sign_up_with_missing_key(self):
+        testing_user = app.test_client(self)
+        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_user[0]),
+                                     content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Missing ' + self.my_user[0], str(response.data))
+
+    def test_user_can_not_sign_up_with_missing_value(self):
+        testing_user = app.test_client(self)
+        self.my_users[1]['first_name'] = ''
+        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_user[1]),
+                                     content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Please fill in first_name', str(response.data))
 
     def test_user_can_signup(self):
         testing_user = app.test_client(self)

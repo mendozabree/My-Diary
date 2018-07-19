@@ -1,9 +1,22 @@
+"""This is my_classes module
+
+This module associates the endpoints to their functions.
+"""
+
+
 class Entry:
     def __init__(self):
         self.number_of_entries = 0
-        self.my_entries = []
 
-    def create_new_entry(self, entry_data):
+    def create_new_entry(self, entry_data, entries):
+        """
+        Creates a new entry when all values and keys are provided.
+        If not provided an error is returned specifying the missing key or value or both.
+        :param entry_data:
+        :param entries:
+        :return:
+        """
+
         message = []
         expected_key_list = ['entry_date', 'entry_time', 'title', 'content']
         entry_data_key_list = [*entry_data.keys()]
@@ -23,22 +36,47 @@ class Entry:
 
         if len(message) == 0:
             entry_data['entry_id'] = self.number_of_entries = self.number_of_entries + 1
-            self.my_entries.append(entry_data)
+            entries.append(entry_data)
             return "Your memory has been saved"
         else:
             return message
 
-    def get_specific_entry(self, entry_id):
-        my_entry = [entry for entry in self.my_entries if entry['entry_id'] == entry_id]
+    @staticmethod
+    def get_all_entries(entries):
+        """Returns all entries"""
+        return entries
+
+    @staticmethod
+    def get_specific_entry(entry_id, entries):
+        """
+        Returns an entry as specified by an entry_id.
+        If entry_id doesn't exist, an error message is returned
+        :param entry_id:
+        :param entries:
+        :return:
+        """
+
+        my_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
         if not my_entry:
             return "Entry not found"
         else:
             return my_entry
 
-    def modify_entry(self, entry_id, new_data):
+    @staticmethod
+    def modify_entry(entry_id, new_data, entries):
+        """
+        Modifies an entry based on entry_id.
+        If entry_id not found an error message is returned.
+        If the content or title update provided is an empty string,
+        an error message is displayed so it can be rectified.
+        :param entry_id:
+        :param new_data:
+        :param entries:
+        :return:
+        """
         messages = []
         modify_model = [*new_data.keys()]
-        current_entry = [entry for entry in self.my_entries if entry['entry_id'] == entry_id]
+        current_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
         if not current_entry:
             entry_id_error = "No entry, please check the id"
             messages.append(entry_id_error)

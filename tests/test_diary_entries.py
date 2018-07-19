@@ -31,7 +31,8 @@ class DiaryEntryTestCase(unittest.TestCase):
                 'content': 'I am following some flask youtube videos from pretty printed. I am going to work along with'
                            'them then later create my own product.'
             }]
-        self.my_entry =  [{
+        self.my_entry =  [
+            {
                 'entry_id': 3,
                 'entry_date': '20 June 2018',
                 'title': 'Day Two Flask API',
@@ -39,6 +40,33 @@ class DiaryEntryTestCase(unittest.TestCase):
                            'Yesterday, i created a simple todo list API using flask and SQLAlchemy'
             }
         ]
+        self.my_users = [
+            {
+                'first_name': 'Shem',
+                'last_name': 'Nambale',
+                'username': 'NShemus',
+                'email': 'shem@gmail.com',
+                'password': 'SNambale'
+            },
+            {
+                'first_name': 'Jocy',
+                'last_name': 'Pan',
+                'username': 'JoPan',
+                'email': 'jopan@gmail.com',
+                'password': 'PanJoc'
+            }
+        ]
+
+    def test_user_can_signup(self):
+        testing_user = app.test_client(self)
+        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[0]),
+                                    content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Welcome ' + self.my_users[0]['username'], str(response.data))
+        res = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[1]),
+                                    content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+        self.assertIn('Welcome ' + self.my_users[1]['username'], str(res.data))
 
     def test_API_can_not_make_an_entry_with_missing_values(self):
         """Tests that the API will fail to create new entry if any value is blank"""

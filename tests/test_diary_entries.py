@@ -22,22 +22,21 @@ class DiaryEntryTestCase(unittest.TestCase):
                 'entry_id': 1,
                 'entry_date': '18 June 2018',
                 'entry_time': '22 15',
-                'entry_title': 'Learning Flask',
-                'content': 'Flask is a micro-framework based on python. '
-                           'Flask is useful for designing APIs.'
+                'title': 'Learning Flask',
+                'content': 'Flask is a micro-framework based on python. Flask is useful for designing APIs.'
             },
             {
                 'entry_id': 2,
                 'entry_date': '19 June 2018',
                 'entry_time': '22 15',
-                'entry_title': 'My first Flask API',
-                'content': 'I am following some flask youtube videos from pretty printed. '
-                           'I am going to work along with them then later create my own product.'
+                'title': 'My first Flask API',
+                'content': 'I am following some flask youtube videos from pretty printed. I am going to work along with'
+                           'them then later create my own product.'
             },
             {
                 'entry_id': 3,
                 'entry_date': '20 June 2018',
-                'entry_title': 'Day Two Flask API',
+                'title': 'Day Two Flask API',
                 'content': 'So, pretty printed is very nice channel, they explain pretty well. '
                            'Yesterday, i created a simple todo list API using flask and SQLAlchemy'
             }
@@ -75,15 +74,14 @@ class DiaryEntryTestCase(unittest.TestCase):
     def test_get_all_entries(self):
         """Tests that all entries can be retrieved"""
         testing_user = app.test_client(self)
-        response = testing_user.get("/api/v1/entries", content_type="application/json")
-        assert b'Exhausted' in response.data
-        assert b'Excitement' in response.data
+        response = testing_user.get("/api/v1/entries")
+        self.assertIn("My first Flask API", str(response.data))
 
     def test_get_specific_entry(self):
         testing_user = app.test_client(self)
         my_id = {"entry_id": 1}
         response = testing_user.get("/api/v1/entries/{}".format(my_id['entry_id']))
-        assert b'Exhausted' in response.data
+        self.assertEqual(response.status_code, 200)
 
     def test_API_will_fail_to_update_when_content_is_empty(self):
         testing_user = app.test_client(self)

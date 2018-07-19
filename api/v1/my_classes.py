@@ -93,3 +93,12 @@ class Entry:
             return "Entry updated"
         else:
             return messages
+
+class User:
+    def __init__(self):
+        self.number_of_users = 0
+
+    def signup(self, signup_data, my_users):
+        signup_data['id'] = self.number_of_users = self.number_of_users + 1
+        my_users.append(signup_data)
+        return 'Welcome ' + signup_data['username']

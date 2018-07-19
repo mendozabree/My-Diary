@@ -60,7 +60,7 @@ class DiaryEntryTestCase(unittest.TestCase):
     def test_user_can_signup(self):
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[0]),
-                                    content_type='application/json')
+                                     content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertIn('Welcome ' + self.my_users[0]['username'], str(response.data))
         res = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[1]),

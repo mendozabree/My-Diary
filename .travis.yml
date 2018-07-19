@@ -9,3 +9,8 @@ install:
 # command to run tests
 script:
   - pytest tests/test_diary_entries.py
+
+after_success:
+  -coverage report
+  -coveralls
+  #upload reports to coveralls.io

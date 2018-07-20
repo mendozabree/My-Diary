@@ -40,6 +40,7 @@ class UserTestCase(unittest.TestCase):
         my_users.clear()
 
     def test_API_can_not_sign_up_user_with_missing_key(self):
+        """Test API can not signup user with missing key"""
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/users', data=json.dumps(self.my_user[0]),
                                      content_type='application/json')
@@ -47,6 +48,7 @@ class UserTestCase(unittest.TestCase):
         self.assertIn('Missing username', str(response.data))
 
     def test_API_can_not_sign_up_user_with_missing_value(self):
+        """Test that API can not signup user with missing values"""
         testing_user = app.test_client(self)
         self.my_users[1]['first_name'] = ''
         response = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[1]),

@@ -6,7 +6,7 @@ This module is the view for the API regarding users
 
 from flask import jsonify, request
 
-from app import app
+from api.v1 import app
 from api.v1.my_classes import User
 
 my_users = []

@@ -7,7 +7,7 @@ This module tests the entries endpoints of the API.
 import unittest
 import json
 
-from api.v1 import app
+from api import app
 from api.v1.endpoints.users import my_users
 from api.v1.endpoints.entries import my_entries
 

@@ -6,7 +6,7 @@ It utilises the my_classes module to get return values
 
 from flask import jsonify, request
 
-from api.v1 import app
+from api import app
 from api.v1.my_classes import Entry
 
 

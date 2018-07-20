@@ -8,6 +8,8 @@ import unittest
 import json
 
 from api.v1 import app
+from api.v1.endpoints.users import my_users
+from api.v1.endpoints.entries import my_entries
 
 
 class DiaryEntryTestCase(unittest.TestCase):
@@ -65,42 +67,6 @@ class DiaryEntryTestCase(unittest.TestCase):
             }
         ]
 
-    def test_API_can_not_sign_up_user_with_missing_key(self):
-        testing_user = app.test_client(self)
-        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_user[0]),
-                                     content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Missing username', str(response.data))
-
-    def test_API_can_not_sign_up_user_with_missing_value(self):
-        testing_user = app.test_client(self)
-        self.my_users[1]['first_name'] = ''
-        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[1]),
-                                     content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Please fill in first_name', str(response.data))
-
-    def test_user_can_signup(self):
-        testing_user = app.test_client(self)
-        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[0]),
-                                     content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Welcome ' + self.my_users[0]['username'], str(response.data))
-        res = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[1]),
-                                    content_type='application/json')
-        self.assertEqual(res.status_code, 200)
-        self.assertIn('Welcome ' + self.my_users[1]['username'], str(res.data))
-
-    def test_API_can_login_user(self):
-        testing_user = app.test_client(self)
-        response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[0]),
-                                     content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Welcome back, ' + self.my_users[0]['username'], str(response.data))
-        res = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[1]),
-                                    content_type='application/json')
-        self.assertEqual(res.status_code, 200)
-        self.assertIn('Welcome back, ' + self.my_users[1]['username'], str(res.data))
 
     def test_API_can_not_make_an_entry_with_missing_values(self):
         """Tests that the API will fail to create new entry if any value is blank"""

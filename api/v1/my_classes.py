@@ -122,3 +122,12 @@ class User:
             return 'Welcome ' + signup_data['username']
         else:
             return message
+
+    @staticmethod
+    def login(login_data, my_users):
+        my_user = [user for user in my_users if user['username'] == login_data['username']]
+        if my_user:
+            message = 'Welcome back, ' + login_data['username']
+        else:
+            message = 'Incorrect username or password'
+        return message

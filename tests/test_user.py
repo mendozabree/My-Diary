@@ -36,6 +36,7 @@ class UserTestCase(unittest.TestCase):
                 'password': 'SNambale'
             }
         ]
+
     def tearDown(self):
         my_users.clear()
 

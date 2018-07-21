@@ -42,31 +42,6 @@ class DiaryEntryTestCase(unittest.TestCase):
                            'Yesterday, i created a simple todo list API using flask and SQLAlchemy'
             }
         ]
-        self.my_users = [
-            {
-                'first_name': 'Shem',
-                'last_name': 'Nambale',
-                'username': 'NShemus',
-                'email': 'shem@gmail.com',
-                'password': 'SNambale'
-            },
-            {
-                'first_name': 'Jocy',
-                'last_name': 'Pan',
-                'username': 'JoPan',
-                'email': 'jopan@gmail.com',
-                'password': 'PanJoc'
-            }
-        ]
-        self.my_user = [
-            {
-                'first_name': 'Shem',
-                'last_name': 'Nambale',
-                'email': 'shem@gmail.com',
-                'password': 'SNambale'
-            }
-        ]
-
 
     def test_API_can_not_make_an_entry_with_missing_values(self):
         """Tests that the API will fail to create new entry if any value is blank"""

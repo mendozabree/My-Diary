@@ -12,9 +12,11 @@ from api.v1.my_classes import User
 my_users = []
 first_user = User()
 
+
 @app.route('/', methods=['GET'])
 def home():
     return jsonify({'Message': 'You are welcome'})
+
 
 @app.route('/api/v1/users', methods=['POST'])
 def signup():

@@ -8,17 +8,16 @@
 </head>
 <body>
     <div class="sign_in_container">
-        <form>
+        <form method="post" action="home.html">
             <div><img src="img/MyDiary.PNG" class="logo"></div>
             <div class="user_data">
                 <h2>Let's write!</h2>
                 <div><label class="text-label" for="username">Username</label></div>
-                <div><input id="username" class="text-box" type="text" required="required"></div>
+                <div><input id="username" class="text-box" type="text" required/></div>
                 <div><label class="text-label" for="password">Password</label></div>
-                <div><input id="password" class="text-box" type="text" required="required"/></div>
-                <button onclick="location.href='/My-Diary/UI/home.html'" class="primary-btn" type="button">Sign In</button>
+                <div><input id="password" class="text-box" type="text" required=/></div>
+                <button class="primary-btn" type="submit">Sign In</button>
                 <a href="index.html" class="secondary-btn">Sign Up</a>
-                <!--<button onclick="location.href='/My-Diary/UI/index.html'" class="secondary-btn" type="button">Sign Up</button>-->
             </div>
         </form>
     </div>

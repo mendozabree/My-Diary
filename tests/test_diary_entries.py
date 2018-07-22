@@ -111,6 +111,7 @@ class DiaryEntryTestCase(unittest.TestCase):
         self.my_entries[0]['content'] = ''
         response = testing_user.put('/api/v1/entries/1', data=json.dumps(self.my_entries[0]),
                                     content_type='application/json')
+        self.assertEqual(response.status_code, 400)
         self.assertIn('Please provide content', str(response.data))
 
     def test_API_will_fail_to_update_when_title_is_empty(self):

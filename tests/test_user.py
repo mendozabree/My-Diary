@@ -61,22 +61,22 @@ class UserTestCase(unittest.TestCase):
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[0]),
                                      content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertIn('Welcome ' + self.my_users[0]['username'], str(response.data))
         res = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[1]),
                                 content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Welcome ' + self.my_users[1]['username'], str(res.data))
 
     def test_API_can_login_user(self):
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[0]),
                                      content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertIn('Welcome ' + self.my_users[0]['username'], str(response.data))
         res = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[1]),
                                 content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Welcome ' + self.my_users[1]['username'], str(res.data))
         final_response = testing_user.post('/api/v1/auth/users', data=json.dumps(self.my_users[0]),
                                            content_type='application/json')

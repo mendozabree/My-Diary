@@ -8,22 +8,22 @@
 </head>
 <body>
     <div class="signup_container">
-        <form method="post">
+        <form method="post" action="home.html">
             <div><img src="img/MyDiary.PNG" class="logo"></div>
             <div class="user_data">
                 <h2>Begin Today</h2>
                 <div><label class="text-label" for="firstName">First Name</label></div>
-                <div><input id="firstName" class="text-box" type="text"></div>
+                <div><input id="firstName" class="text-box" type="text" required></div>
                 <div><label class="text-label" for="lastName">Last Name</label></div>
-                <div><input id="lastName" class="text-box" type="text"></div>
+                <div><input id="lastName" class="text-box" type="text" required></div>
                 <div><label class="text-label" for="userName">Username</label></div>
-                <div><input id="userName" class="text-box" type="text"></div>
+                <div><input id="userName" class="text-box" type="text" required></div>
                 <div><label class="text-label" for="email">Email</label></div>
-                <div><input id="email" class="text-box" type="text"></div>
+                <div><input id="email" class="text-box" type="text" required></div>
                 <div><label class="text-label" for="password">Password</label></div>
-                <div><input id="password" class="text-box" type="text"></div>
+                <div><input id="password" class="text-box" type="text" required></div>
                 <div>
-                    <button onclick="location.href='/My-Diary/UI/home.html'" class="primary-btn" type="button">Sign Up</button>
+                    <button class="primary-btn" type="submit">Sign Up</button>
                     <a href="sign_in.html" class="secondary-btn">Sign In</a>
                 </div>
             </div>

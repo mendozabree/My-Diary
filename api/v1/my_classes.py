@@ -116,12 +116,21 @@ class User:
 
     @staticmethod
     def login(login_data, my_users):
-        my_user = [user for user in my_users if user['username'] == login_data['username']]
-        if my_user:
-            message = 'Welcome back, ' + login_data['username']
+        messages = dict()
+        expected_key_list = ['username', 'password']
+        fields_check_result = fields_check(expected_key_list=expected_key_list, pending_data=login_data)
+
+        if any(fields_check_result.values()) is False:
+            my_user = [user for user in my_users if user['username'] == login_data['username']]
+            if my_user:
+                messages['message'] = 'Welcome back, ' + login_data['username']
+                messages['code'] = 200
+            else:
+                messages['message'] = 'Incorrect username or password'
+                messages['code'] = 400
+            return messages
         else:
-            message = 'Incorrect username or password'
-        return message
+            return fields_check_result
 
 
 def fields_check(expected_key_list, pending_data):

@@ -29,4 +29,4 @@ def signup():
 def login():
     login_data = request.get_json()
     message = User.login(login_data=login_data, my_users=my_users)
-    return jsonify({'Message': message})
+    return make_response(jsonify({'Message': message['message']})), message['code']

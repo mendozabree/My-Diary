@@ -83,7 +83,7 @@ class Entry:
                     current_entry[0][item] = value
 
         if len(messages) == 0:
-            success_message = {'message': 'Entry updated', 'code': 200}
+            success_message = {'message': 'Entry updated', 'code': 201}
             return success_message
         else:
             result = {'message': messages, 'code': 400}

@@ -19,7 +19,7 @@ def get_all_entries():
     """use http get method to return all diary entries"""
 
     entries = Entry.get_all_entries(entries=my_entries)
-    return jsonify({'My entries': entries})
+    return make_response(jsonify({'My entries': entries})), 200
 
 
 @app.route('/api/v1/entries/<int:entry_id>', methods=['GET'])
@@ -31,7 +31,7 @@ def get_specific_entry(entry_id):
     """
 
     res = Entry.get_specific_entry(entry_id=entry_id, entries=my_entries)
-    return jsonify({"response": res})
+    return make_response(jsonify({"response": res})), 200
 
 
 @app.route('/api/v1/entries', methods=['POST'])

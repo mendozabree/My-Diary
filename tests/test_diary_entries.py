@@ -33,7 +33,7 @@ class DiaryEntryTestCase(unittest.TestCase):
                 'content': 'I am following some flask youtube videos from pretty printed. I am going to work along with'
                            'them then later create my own product.'
             }]
-        self.my_entry =  [
+        self.my_entry = [
             {
                 'entry_id': 3,
                 'entry_date': '20 June 2018',
@@ -49,15 +49,15 @@ class DiaryEntryTestCase(unittest.TestCase):
         self.my_entries[0]['title'] = ''
         response = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[0]),
                                      content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Enter value for title', str(response.data))
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('Please fill in title', str(response.data))
 
     def test_API_can_not_make_an_entry_with_missing_key(self):
         """Tests that the API will fail  to create a new entry if a key is missing"""
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entry[0]),
                                      content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 400)
         self.assertIn('Missing entry_time', str(response.data))
 
     def test_API_can_make_new_entry(self):
@@ -66,11 +66,11 @@ class DiaryEntryTestCase(unittest.TestCase):
         # Add first entry
         response = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[0]),
                                      content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[0]['title'] + ' has been saved', str(response.data))
         # Add second entry
         res = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[1]), content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[1]['title'] + ' has been saved', str(res.data))
 
     def test_get_all_entries(self):
@@ -78,12 +78,12 @@ class DiaryEntryTestCase(unittest.TestCase):
         testing_user = app.test_client(self)
         # Add first entry
         res = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[0]), content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[0]['title'] + ' has been saved', str(res.data))
         # Add second entry
         response = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[1]),
                                      content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[1]['title'] + ' has been saved', str(response.data))
         # Get all entries
         final_response = testing_user.get('/api/v1/entries')
@@ -97,7 +97,7 @@ class DiaryEntryTestCase(unittest.TestCase):
         # Add first entry
         res = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[0]),
                                 content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[0]['title'] + ' has been saved', str(res.data))
         # Get specific entry
         my_id = {'entry_id': 1}
@@ -127,12 +127,12 @@ class DiaryEntryTestCase(unittest.TestCase):
         testing_user = app.test_client(self)
         res = testing_user.post('/api/v1/entries', data=json.dumps(self.my_entries[0]),
                                 content_type='application/json')
-        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.status_code, 201)
         self.assertIn('Your memory entitled ' + self.my_entries[0]['title'] + ' has been saved', str(res.data))
         self.my_entries[0]['title'] = 'Learnt Flask!'
         response = testing_user.put('/api/v1/entries/1', data=json.dumps(self.my_entries[0]),
                                     content_type='application/json')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertIn('Entry updated', str(response.data))
 
 

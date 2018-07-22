@@ -25,7 +25,7 @@ def signup():
     return make_response(jsonify({'Message': message['message']})), message['code']
 
 
-@app.route('/api/v1/auth/users', methods=['POST'])
+@app.route('/api/v1/auth/login', methods=['POST'])
 def login():
     login_data = request.get_json()
     message = User.login(login_data=login_data, my_users=my_users)

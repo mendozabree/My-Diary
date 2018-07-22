@@ -68,6 +68,23 @@ class UserTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 201)
         self.assertIn('Welcome ' + self.my_users[1]['username'], str(res.data))
 
+    def test_user_can_not_login_with_missing_key(self):
+        """Test API can not log in user with missing key"""
+        testing_user = app.test_client(self)
+        response = testing_user.post('/api/v1/auth/login', data=json.dumps(self.my_user[0]),
+                                     content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Missing username', str(response.data))
+
+    def test_API_can_not_login_user_with_missing_value(self):
+        """Test that API can not login user with missing values"""
+        testing_user = app.test_client(self)
+        self.my_users[1]['first_name'] = ''
+        response = testing_user.post('/api/v1/auth/login', data=json.dumps(self.my_users[1]),
+                                     content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('Please fill in first_name', str(response.data))
+
     def test_API_can_login_user(self):
         testing_user = app.test_client(self)
         response = testing_user.post('/api/v1/users', data=json.dumps(self.my_users[0]),

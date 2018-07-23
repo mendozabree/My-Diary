@@ -9,6 +9,7 @@ before_script:
 install:
   - pip install -r requirements.txt
   - pip install coverage
+  - pip install coveralls
 
 # for codecoverage on codeclimate.com
 env:
@@ -19,3 +20,6 @@ env:
 # command to run tests
 script:
   - pytest tests/test_diary_entries.py
+
+after_success:
+  - coveralls

@@ -5,11 +5,23 @@ html, body{
 h2{
     color: #3B3B3B;
 }
+h3, h4{
+    color: #3B3B3B;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 .container{
+    background-color: #F7F7F7;
     align-items: center;
     justify-content: center;
     padding: 50px 100px 100px;
     min-height: 100%;
+}
+.profile{
+    background: url("../img/profile-page.jpg");
+    padding-left: 250px;
+    padding-bottom: 95px;
+    padding-top: 45px;
+    border-radius: 5px;
 }
 .sign_in_container{
     background: url("../img/bckgnd-img.jpg") no-repeat center;
@@ -56,6 +68,9 @@ h2{
     height: 20px;
     width: 200px;
 }
+#no_of_entries{
+    font-family: "Cambria Math";
+}
 .text-label{
     /*margin: 10px 10px 5px;*/
     margin-bottom: 10px;
@@ -69,7 +84,6 @@ h2{
     margin-right: 20px;
     margin-left: 10px;
     padding-bottom: 10px;
-
 }
 .sample_text{
     font-family: Gabriola;
@@ -85,6 +99,7 @@ h2{
     font-family: Gabriola;
     font-size: 20px;
     word-spacing: 3px;
+    background: url("../img/paper.jpg") repeat;
 }
 .label{
     padding-bottom: 5px;
@@ -96,7 +111,8 @@ h2{
     margin-bottom: 30px;
     padding: 30px 20px 30px 20px;
     border: 0;
-    border-radius: 15px
+    border-radius: 15px;
+    background: url("../img/paper.jpg") repeat;
 }
 .entry:hover{
     animation: pop 0.2s linear 1;

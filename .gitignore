@@ -5,7 +5,7 @@ __pycache__/
 
 # Unit test / coverage reports
 .pytest_cache
-
+tests/.pytest_cache/
 # virtualenv
 venv/
 

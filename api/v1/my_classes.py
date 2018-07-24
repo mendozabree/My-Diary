@@ -17,29 +17,18 @@ class Entry:
         :return:
         """
 
-        message = []
+        success_message = dict()
         expected_key_list = ['entry_date', 'entry_time', 'title', 'content']
-        entry_data_key_list = [*entry_data.keys()]
+        fields_check_result = fields_check(expected_key_list=expected_key_list, pending_data=entry_data)
 
-        odds = [this_key for this_key in expected_key_list if this_key not in entry_data_key_list]
-        if len(odds) != 0:
-            for key in odds:
-                error = 'Missing ' + key
-                message.append(error)
-
-        similar = [some_key for some_key in expected_key_list if some_key in entry_data_key_list]
-        for my_key in similar:
-            value = entry_data[my_key]
-            if value == '':
-                missing_value = 'Enter value for ' + my_key
-                message.append(missing_value)
-
-        if len(message) == 0:
+        if any(fields_check_result.values()) is False:
             entry_data['entry_id'] = self.number_of_entries = self.number_of_entries + 1
             entries.append(entry_data)
-            return 'Your memory entitled ' + entry_data['title'] + ' has been saved'
+            success_message['message'] = 'Your memory entitled ' + entry_data['title'] + ' has been saved'
+            success_message['code'] = 201
+            return success_message
         else:
-            return message
+            return fields_check_result
 
     @staticmethod
     def get_all_entries(entries):
@@ -58,7 +47,8 @@ class Entry:
 
         my_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
         if not my_entry:
-            return "Entry not found"
+            result = {'message': 'Entry not found, please check id', 'code': 400}
+            return result
         else:
             return my_entry
 
@@ -74,11 +64,14 @@ class Entry:
         :param entries:
         :return:
         """
+
         messages = []
+
         modify_model = [*new_data.keys()]
         current_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
+
         if not current_entry:
-            entry_id_error = "No entry, please check the id"
+            entry_id_error = "No entry found, please check the id"
             messages.append(entry_id_error)
         else:
             for item in modify_model:
@@ -90,44 +83,74 @@ class Entry:
                     current_entry[0][item] = value
 
         if len(messages) == 0:
-            return "Entry updated"
+            success_message = {'message': 'Entry updated', 'code': 201}
+            return success_message
         else:
-            return messages
+            result = {'message': messages, 'code': 400}
+            return result
+
 
 class User:
     def __init__(self):
         self.number_of_users = 0
 
     def signup(self, signup_data, my_users):
-        message = []
-        expected_key_list = ['first_name', 'last_name', 'email', 'username', 'password']
-        signup_data_key_list = [*signup_data.keys()]
+        """
+        Function that handles the sign up operation
+        :param signup_data:
+        :param my_users:
+        :return:
+        """
+        success_result = {}
+        expected_key_list = ['first_name', 'last_name', 'username', 'password', 'email']
 
-        odds = [this_key for this_key in expected_key_list if this_key not in signup_data_key_list]
-        if len(odds) != 0:
-            for key in odds:
-                error = 'Missing ' + key
-                message.append(error)
-
-        similar = [some_key for some_key in expected_key_list if some_key in signup_data_key_list]
-        for my_key in similar:
-            value = signup_data[my_key]
-            if value == '':
-                missing_value = 'Please fill in ' + my_key
-                message.append(missing_value)
-
-        if len(message) == 0:
+        result = fields_check(expected_key_list=expected_key_list, pending_data=signup_data)
+        if any(result.values()) is False:
             signup_data['entry_id'] = self.number_of_users = self.number_of_users + 1
             my_users.append(signup_data)
-            return 'Welcome ' + signup_data['username']
+            success_result['code'] = 201
+            success_result['message'] = 'Welcome ' + signup_data['username']
+            return success_result
         else:
-            return message
+            return result
 
     @staticmethod
     def login(login_data, my_users):
-        my_user = [user for user in my_users if user['username'] == login_data['username']]
-        if my_user:
-            message = 'Welcome back, ' + login_data['username']
+        messages = dict()
+        expected_key_list = ['username', 'password']
+        fields_check_result = fields_check(expected_key_list=expected_key_list, pending_data=login_data)
+
+        if any(fields_check_result.values()) is False:
+            my_user = [user for user in my_users if user['username'] == login_data['username']]
+            if my_user:
+                messages['message'] = 'Welcome back, ' + login_data['username']
+                messages['code'] = 200
+            else:
+                messages['message'] = 'Incorrect username or password'
+                messages['code'] = 400
+            return messages
         else:
-            message = 'Incorrect username or password'
-        return message
+            return fields_check_result
+
+
+def fields_check(expected_key_list, pending_data):
+    messages = []
+    result = dict()
+    pending_data_key_list = [*pending_data.keys()]
+
+    odds = [this_key for this_key in expected_key_list if this_key not in pending_data_key_list]
+    if len(odds) != 0:
+        for key in odds:
+            error = 'Missing ' + key
+            messages.append(error)
+        result['code'] = 400
+
+    similar = [some_key for some_key in expected_key_list if some_key in pending_data_key_list]
+    for my_key in similar:
+        value = pending_data[my_key]
+        if value == '':
+            missing_value = 'Please fill in ' + my_key
+            messages.append(missing_value)
+            result['code'] = 400
+    result['message'] = messages
+    return result

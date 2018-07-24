@@ -4,24 +4,61 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="static/diary.css">
     <link rel="icon" href="img/favicon.ico">
+    <script src="static/diary.js"></script>
     <title>Profile</title>
 </head>
 <body>
     <nav class="nav">
         <ul class="top-nav">
             <li><a class="active" href="home.html"><img src="img/MyDiary-small.PNG" alt="My Diary"></a></li>
+            <li class="right"><a href="sign_in.html">Log out</a></li>
+            <li class="right"><img src="img/user.png"></li>
             <li class="right"><a href=profile.html>Profile</a></li>
         </ul>
     </nav>
     <div class="container">
-        <div>
+        <div class="profile">
             <h2>Your Profile</h2>
-            <label class="label">Number of entries</label>
-            <label class="label" id="no_of_entries">5</label>
-        </div>
-        <div>
-            <input type="checkbox" value="notifications">
-            <label class="label">Get notifications</label>.
+            <h3>Account details</h3>
+            <div>
+                <div>
+                    <img src="img/profile.jpg" alt="Profile pic">
+                    <button class="primary-btn">Change profile picture</button>
+                </div>
+                <div>
+                    <div>
+                        <label class="label">Change username: </label>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div><h4>Change Password</h4></div>
+                    <div>
+                        <label class="label">Enter current password: </label>
+                        <input type="text" class="text-box">
+                    </div>
+                    <div>
+                        <label class="label">Enter new password: </label>
+                        <input type="text" class="text-box">
+                    </div>
+                </div>
+            </div>
+            <h3>Diary Details</h3>
+            <div>
+                <div>
+                    <label class="label">Number of entries: </label>
+                    <label class="label" id="no_of_entries">5</label>
+                </div>
+                <label class="label">Want to set reminders for when to write, select the checkbox below.</label>
+                <div>
+                    <input type="checkbox" value="notifications">
+                    <label class="label">Send me an email on this day:
+                    <input id="my_date" onclick="pickDate()" PLACEHOLDER="Click to enter date">
+                    </label>.
+                </div>
+            </div>
+            <div>
+                <button class="primary-btn save-btn">Save Changes</button>
+                <a class="secondary-btn" href="home.html">Cancel</a>
+            </div>
         </div>
     </div>
 </body>

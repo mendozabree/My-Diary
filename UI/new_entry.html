@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="static/diary.css">
     <link rel="icon" href="img/favicon.ico">
+    <script src="static/diary.js"></script>
     <title>New Entry</title>
 </head>
 <body>
     <nav class="nav">
         <ul class="top-nav">
             <li><a class="active" href="home.html"><img src="img/MyDiary-small.PNG" alt="My Diary"></a></li>
+            <li class="right"><a href="sign_in.html">Log out</a></li>
+            <li class="right"><img src="img/user.png"></li>
             <li class="right"><a href=profile.html>Profile</a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="my_entry">
             <div>
-                <input type="text" PLACEHOLDER="Enter date" class="date-label">
+                <input PLACEHOLDER="Enter date" class="date-label" id="my_date" onclick="pickDate()">
             </div>
             <textarea id="entry" cols="120" rows="10" placeholder="How are you today?"></textarea>
         </div>

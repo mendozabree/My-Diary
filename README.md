@@ -34,6 +34,7 @@ These are instructions for setting up MyDiary app in a development enivornment.
   $ git clone https://github.com/mendozabree/My-Diary.git
   ```
   
+
 * Install necessary requirements
   ```
   $ pip install -r myDiary/requirements.txt

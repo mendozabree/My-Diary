@@ -56,6 +56,16 @@ These are the endpoints to test
 | POST | /api/v1/entries      | Create a new entry |
 | PUT      | /api/v1/entries/id      | Modify a specific entry using an id |
 
+## Running the tests with covergae
+* Install nosetests and coverage
+  ```
+  $ pip install nose coverage
+  ```
+
+* Running the tests
+  ```
+  $ nosetests -v --with-coverage --cover-package=tests
+  ```
 
 ## Deployment sites
 The user interfaces are hosted at https://mendozabree.github.io/My-Diary/UI/index.html

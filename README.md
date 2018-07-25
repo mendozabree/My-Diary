@@ -12,7 +12,14 @@ This is the software that you need to get started with.
 ### Prerequisites
 
 * Python 3.6 to 3.7
-* Port 5000
+* pip
+* Flask 1.0.2
+
+  
+  [Here](https://www.python.org/getit/) is how to get python up and running
+  
+  [Here](https://pip.pypa.io/en/stable/installing/) is how to get pip up and running
+  
 
 ## Setting Up for Development
 These are instructions for setting up MyDiary app in a development enivornment.

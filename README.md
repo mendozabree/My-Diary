@@ -71,7 +71,7 @@ These are the endpoints to test
 
 * Running the tests
   ```
-  $ nosetests -v --with-coverage --cover-package=tests
+  $ nosetests -v --with-coverage --cover-package=api
   ```
 
 ## Deployment sites

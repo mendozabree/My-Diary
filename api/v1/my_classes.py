@@ -47,10 +47,11 @@ class Entry:
 
         my_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
         if not my_entry:
-            result = {'message': 'Entry not found, please check id', 'code': 400}
+            result = {'message': 'Entry not found, please check id', 'code': 404}
             return result
         else:
-            return my_entry
+            result = {'message': my_entry, 'code': 200}
+            return result
 
     @staticmethod
     def modify_entry(entry_id, new_data, entries):
@@ -66,13 +67,14 @@ class Entry:
         """
 
         messages = []
-
+        
         modify_model = [*new_data.keys()]
         current_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
 
         if not current_entry:
-            entry_id_error = "No entry found, please check the id"
-            messages.append(entry_id_error)
+            missing_id_error = {'message': "No entry found, please check the id", 'code': 404}
+
+            return missing_id_error
         else:
             for item in modify_model:
                 value = new_data[item]

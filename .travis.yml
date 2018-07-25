@@ -20,7 +20,7 @@ env:
   
 # command to run tests
 script:
-  - nosetests -v --with-coverage --cover-package=run,api,tests
+  - nosetests -v --with-coverage --cover-package=run,api
 
 after_success:
   - coveralls

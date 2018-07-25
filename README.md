@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/mendozabree/My-Diary.svg?branch=develop)](https://travis-ci.com/mendozabree/My-Diary)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b244783690700c7ae422/maintainability)](https://codeclimate.com/github/mendozabree/My-Diary/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/mendozabree/My-Diary/badge.svg?branch=master)](https://coveralls.io/github/mendozabree/My-Diary?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/mendozabree/My-Diary/badge.svg?branch=develop)](https://coveralls.io/github/mendozabree/My-Diary?branch=develop)
 
 This is a web application where one can write down their thoughts , feelings. Day to Day activities, it's a personal diary.
 
@@ -12,7 +12,14 @@ This is the software that you need to get started with.
 ### Prerequisites
 
 * Python 3.6 to 3.7
-* Port 5000
+* pip
+* Flask 1.0.2
+
+  
+  [Here](https://www.python.org/getit/) is how to get python up and running
+  
+  [Here](https://pip.pypa.io/en/stable/installing/) is how to get pip up and running
+  
 
 ## Setting Up for Development
 These are instructions for setting up MyDiary app in a development enivornment.
@@ -33,6 +40,7 @@ These are instructions for setting up MyDiary app in a development enivornment.
   ```
   $ git clone https://github.com/mendozabree/My-Diary.git
   ```
+  
 
 * Install necessary requirements
   ```
@@ -43,8 +51,8 @@ These are instructions for setting up MyDiary app in a development enivornment.
   ```
   $ python run.py
   ```
-
-This site should now be running at http://localhost:5000
+  
+This site should now be running at http://localhost:5000 
 
 These are the endpoints to test
 
@@ -55,6 +63,16 @@ These are the endpoints to test
 | POST | /api/v1/entries      | Create a new entry |
 | PUT      | /api/v1/entries/id      | Modify a specific entry using an id |
 
+## Running the tests with covergae
+* Install nosetests and coverage
+  ```
+  $ pip install nose coverage
+  ```
+
+* Running the tests
+  ```
+  $ nosetests -v --with-coverage --cover-package=api
+  ```
 
 ## Deployment sites
 The user interfaces are hosted at https://mendozabree.github.io/My-Diary/UI/index.html

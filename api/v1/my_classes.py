@@ -67,7 +67,7 @@ class Entry:
         """
 
         messages = []
-        
+
         modify_model = [*new_data.keys()]
         current_entry = [entry for entry in entries if entry['entry_id'] == entry_id]
 
@@ -85,7 +85,7 @@ class Entry:
                     current_entry[0][item] = value
 
         if len(messages) == 0:
-            success_message = {'message': 'Entry updated', 'code': 201}
+            success_message = {'message': 'Entry updated', 'code': 200}
             return success_message
         else:
             result = {'message': messages, 'code': 400}

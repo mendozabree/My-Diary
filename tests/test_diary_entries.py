@@ -132,7 +132,7 @@ class DiaryEntryTestCase(unittest.TestCase):
         self.my_entries[0]['title'] = 'Learnt Flask!'
         response = testing_user.put('/api/v1/entries/1', data=json.dumps(self.my_entries[0]),
                                     content_type='application/json')
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertIn('Entry updated', str(response.data))
 
 

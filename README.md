@@ -33,7 +33,7 @@ These are instructions for setting up MyDiary app in a development enivornment.
 * Prepare the virtual environment
     ```
     $ py -m venv myDiaryvenv
-    $ myDiaryvenv/Scripts/actiavte
+    $ myDiaryvenv/Scripts/activate
     ```
 
 * Clone the project repo

@@ -58,17 +58,13 @@ class Entry:
 
         if not my_entry:
 
-            result = {
-                        'message': 'Entry not found, please check id',
-                        'code': 404
-                    }
+            result = {'message': 'Entry not found, please check id',
+                      'code': 404}
             return result
         else:
 
-            result = {
-                        'message': my_entry,
-                        'code': 200
-                    }
+            result = {'message': my_entry,
+                      'code': 200}
             return result
 
     @staticmethod
@@ -91,11 +87,9 @@ class Entry:
                          entry_id]
 
         if not current_entry:
-            missing_id_error = {
-                                    'message': "No entry found, please check"
-                                               "the entryid",
-                                    'code': 404
-                                }
+            missing_id_error = {'message': "No entry found, please check"
+                                           "the entryid",
+                                'code': 404}
 
             return missing_id_error
         else:
@@ -110,17 +104,13 @@ class Entry:
                     current_entry[0][item] = value
 
         if len(messages) == 0:
-            success_message = {
-                                'message': 'Entry updated',
-                                'code': 200
-                              }
+            success_message = {'message': 'Entry updated',
+                               'code': 200}
             return success_message
         else:
 
-            result = {
-                        'message': messages,
-                        'code': 400
-                     }
+            result = {'message': messages,
+                      'code': 400}
             return result
 
 
@@ -142,10 +132,8 @@ class User:
                                 'password', 'email'
                             ]
 
-        result = fields_check(
-                                expected_key_list=expected_key_list,
-                                pending_data=signup_data
-                             )
+        result = fields_check(expected_key_list=expected_key_list,
+                              pending_data=signup_data)
 
         if not any(result.values()):
             signup_data['entry_id'] = self.number_of_users = \

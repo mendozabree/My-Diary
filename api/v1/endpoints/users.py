@@ -21,20 +21,18 @@ def home():
 @app.route('/api/v1/users', methods=['POST'])
 def signup():
     signup_data = request.get_json()
-    message = first_user.signup(signup_data=signup_data, my_users=my_users)
+    message = first_user.signup(signup_data=signup_data,
+                                my_users=my_users)
 
-    return make_response(
-                            jsonify({'Message': message['message']}),
-                            message['code']
-                        )
+    return make_response(jsonify({'Message': message['message']}),
+                         message['code'])
 
 
 @app.route('/api/v1/auth/login', methods=['POST'])
 def login():
     login_data = request.get_json()
-    message = User.login(login_data=login_data, my_users=my_users)
+    message = User.login(login_data=login_data,
+                         my_users=my_users)
 
-    return make_response(
-                            jsonify({'Message': message['message']}),
-                            message['code']
-                        )
+    return make_response(jsonify({'Message': message['message']}),
+                         message['code'])

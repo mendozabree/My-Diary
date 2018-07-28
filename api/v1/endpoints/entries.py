@@ -19,7 +19,11 @@ def get_all_entries():
     """use http get method to return all diary entries"""
 
     entries = Entry.get_all_entries(entries=my_entries)
-    return make_response(jsonify({'My entries': entries}), 200)
+
+    return make_response(
+                            jsonify({'My entries': entries}),
+                            200
+                        )
 
 
 @app.route('/api/v1/entries/<int:entry_id>', methods=['GET'])
@@ -31,7 +35,11 @@ def get_specific_entry(entry_id):
     """
 
     res = Entry.get_specific_entry(entry_id=entry_id, entries=my_entries)
-    return make_response(jsonify({"response": res['message']}), res['code'])
+
+    return make_response(
+                            jsonify({"response": res['message']}),
+                            res['code']
+                        )
 
 
 @app.route('/api/v1/entries', methods=['POST'])
@@ -39,8 +47,16 @@ def new_entry():
     """use http post method to create a new entry"""
 
     response = request.get_json()
-    res = my_entry.create_new_entry(entry_data=response, entries=my_entries)
-    return make_response(jsonify({'Message': res['message']}), res['code'])
+
+    res = my_entry.create_new_entry(
+                                        entry_data=response,
+                                        entries=my_entries
+                                    )
+
+    return make_response(
+                            jsonify({'Message': res['message']}),
+                            res['code']
+                        )
 
 
 @app.route('/api/v1/entries/<int:entry_id>', methods=['PUT'])
@@ -48,5 +64,14 @@ def modify_entry(entry_id):
     """use http put method to update an entry based on specified entry_id"""
 
     updating_data = request.get_json()
-    response = Entry.modify_entry(entry_id=entry_id, new_data=updating_data, entries=my_entries)
-    return make_response(jsonify({'Message': response['message']}), response['code'])
+
+    response = Entry.modify_entry(
+                                    entry_id=entry_id,
+                                    new_data=updating_data,
+                                    entries=my_entries
+                                 )
+
+    return make_response(
+                            jsonify({'Message': response['message']}),
+                            response['code']
+                        )
